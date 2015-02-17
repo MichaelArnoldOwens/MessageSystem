@@ -16,11 +16,14 @@ class ViewController: UIViewController {
   
     @IBOutlet weak var userNameField: UITextField!
     
+    @IBAction func mainToChannel(sender: AnyObject) {
+        msgList.user = userNameField.text
+        println(msgList.user)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        msgList.user = userNameField.text
-        println(msgList.user)        
+        
     }
 
     override func didReceiveMemoryWarning() {
