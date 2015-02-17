@@ -11,17 +11,10 @@ import UIKit
 
 var msgList: MsgObj = MsgObj()
 
-struct message {
-    var message = "nonmessage"
-}
 
 class MsgObj: NSObject {
-    var user = "nonuser"
     var channel = "nonchannel"
-
-    var Messages = [message]()
-    func addMessage(desc: String){
-        Messages.append(message(message: desc))
-    }
+    var message = "nonmessage"
+    var user = "nonuser"
     
 }

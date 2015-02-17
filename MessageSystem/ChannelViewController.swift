@@ -12,13 +12,15 @@ class ChannelViewController: UIViewController {
 
     @IBOutlet weak var channelTextField: UITextField!
     
+    @IBAction func channelToChat(sender: AnyObject) {
+        msgList.channel = channelTextField.text
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        msgList.channel = channelTextField.text
-        println(msgList.channel)
-    }
+           }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

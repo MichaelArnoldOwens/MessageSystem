@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F15B0EE1A93CB91007396B0 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15B0ED1A93CB91007396B0 /* ChannelViewController.swift */; };
+		4F15B0F21A93F0CF007396B0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15B0F11A93F0CF007396B0 /* ChatViewController.swift */; };
 		4F76615D1A92FA4B001A80AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76615C1A92FA4B001A80AC /* AppDelegate.swift */; };
 		4F76615F1A92FA4B001A80AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76615E1A92FA4B001A80AC /* ViewController.swift */; };
 		4F7661621A92FA4B001A80AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7661601A92FA4B001A80AC /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		4F15B0ED1A93CB91007396B0 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
+		4F15B0F11A93F0CF007396B0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		4F7661571A92FA4B001A80AC /* MessageSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F76615B1A92FA4B001A80AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F76615C1A92FA4B001A80AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				4F76615C1A92FA4B001A80AC /* AppDelegate.swift */,
 				4F76615E1A92FA4B001A80AC /* ViewController.swift */,
 				4F15B0ED1A93CB91007396B0 /* ChannelViewController.swift */,
+				4F15B0F11A93F0CF007396B0 /* ChatViewController.swift */,
 				4FFD70591A930CAC0057990A /* MsgObj.swift */,
 				4F7661601A92FA4B001A80AC /* Main.storyboard */,
 				4F7661631A92FA4B001A80AC /* Images.xcassets */,
@@ -221,6 +224,7 @@
 				4F76615F1A92FA4B001A80AC /* ViewController.swift in Sources */,
 				4FFD705A1A930CAC0057990A /* MsgObj.swift in Sources */,
 				4F15B0EE1A93CB91007396B0 /* ChannelViewController.swift in Sources */,
+				4F15B0F21A93F0CF007396B0 /* ChatViewController.swift in Sources */,
 				4F76615D1A92FA4B001A80AC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

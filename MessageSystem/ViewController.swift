@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     
     @IBAction func mainToChannel(sender: AnyObject) {
         msgList.user = userNameField.text
-        println(msgList.user)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
