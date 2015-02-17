@@ -13,6 +13,7 @@
 		4F7661641A92FA4B001A80AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7661631A92FA4B001A80AC /* Images.xcassets */; };
 		4F7661671A92FA4B001A80AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7661651A92FA4B001A80AC /* LaunchScreen.xib */; };
 		4F7661731A92FA4B001A80AC /* MessageSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7661721A92FA4B001A80AC /* MessageSystemTests.swift */; };
+		4FFD705A1A930CAC0057990A /* MsgObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFD70591A930CAC0057990A /* MsgObj.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		4F76616C1A92FA4B001A80AC /* MessageSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7661711A92FA4B001A80AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7661721A92FA4B001A80AC /* MessageSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSystemTests.swift; sourceTree = "<group>"; };
+		4FFD70591A930CAC0057990A /* MsgObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgObj.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				4F76615C1A92FA4B001A80AC /* AppDelegate.swift */,
 				4F76615E1A92FA4B001A80AC /* ViewController.swift */,
+				4FFD70591A930CAC0057990A /* MsgObj.swift */,
 				4F7661601A92FA4B001A80AC /* Main.storyboard */,
 				4F7661631A92FA4B001A80AC /* Images.xcassets */,
 				4F7661651A92FA4B001A80AC /* LaunchScreen.xib */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F76615F1A92FA4B001A80AC /* ViewController.swift in Sources */,
+				4FFD705A1A930CAC0057990A /* MsgObj.swift in Sources */,
 				4F76615D1A92FA4B001A80AC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +409,7 @@
 				4F7661781A92FA4B001A80AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F7661791A92FA4B001A80AC /* Build configuration list for PBXNativeTarget "MessageSystemTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				4F76617B1A92FA4B001A80AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
