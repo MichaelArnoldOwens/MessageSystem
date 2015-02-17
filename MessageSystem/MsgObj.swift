@@ -20,7 +20,7 @@ class MsgObj: NSObject {
     var channel = "nonchannel"
 
     var Messages = [message]()
-    func addMessage(name: String, desc: String){
+    func addMessage(desc: String){
         Messages.append(message(message: desc))
     }
     
