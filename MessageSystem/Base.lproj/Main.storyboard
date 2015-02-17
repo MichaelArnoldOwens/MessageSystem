@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="228" y="288"/>
         </scene>
-        <!--View Controller-->
+        <!--Channel View Controller-->
         <scene sceneID="nMZ-bf-0q2">
             <objects>
-                <viewController id="mGr-N1-JlM" sceneMemberID="viewController">
+                <viewController id="mGr-N1-JlM" customClass="ChannelViewController" customModule="MessageSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tsK-lG-Mbz"/>
                         <viewControllerLayoutGuide type="bottom" id="X6A-Vh-Tt1"/>
@@ -112,6 +112,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5vc-qJ-JHB"/>
+                    <connections>
+                        <outlet property="channelTextField" destination="MEL-Fb-RgN" id="rfj-hD-Xio"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhB-Qh-rMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
