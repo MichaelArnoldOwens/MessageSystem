@@ -10,17 +10,23 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var messages = [] as Array <MsgObj>
-    var channelName: String!
-    var userName: String?
+    var messages = [] as Array <MsgObj> //used to populate table view
+    
+    var channelName: String! //channel will not change unless going back to previous view
+    var userName: String?   //user is set from first view
+    
+    let baseUrl = "http://tradecraftmessagehub.com/sample/"
 
     @IBOutlet weak var userInputTextField: UITextField!
     
     @IBAction func sendButton(sender: AnyObject) {
-        var message = MsgObj(newChannel: channelName, newUser: userName!)
-        message.text = userInputTextField.text
-        messages.append(message)
-        chatTable.reloadData()
+        if(userInputTextField != nil) {
+            var message = MsgObj(newChannel: channelName, newUser: userName!)
+            message.text = userInputTextField.text
+            messages.append(message)
+           // postMessage(userInputTextField.text)
+            chatTable.reloadData()
+        }
     }
     
     
@@ -105,13 +111,15 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return messages
     }
     
+    
+    //GET
     func getMessages() {
         let session = NSURLSession.sharedSession()
         
         let request = NSMutableURLRequest()
         request.HTTPMethod = "GET"
         
-        request.URL = NSURL(string: "http://tradecraftmessagehub.com/sample/\(channelName)")
+        request.URL = NSURL(string: "\(baseUrl)\(channelName)")
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
             NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
@@ -127,7 +135,63 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         task.resume()
     }
     
+   //POST
+  /*  func post(myMessage: MsgObj){
+
+        let session = NSURLSession.sharedSession()
+        
+        let request = NSMutableURLRequest()
+        request.HTTPMethod = "POST"
+
+        request.URL = NSURL(string: "\(baseUrl)/\(channelName)")
+        
 
 
+        //creating dictionary
+        var err: NSError?
+        let messageDictionaryToServer = [ "\(userName)": "\(userInputTextField)", "testuser" : "testmessage"]
+        let task = NSJSONSerialization.dataWithJSONObject(messageDictionaryToServer, options: 0, error: err)
+        
+        
+    } */
+    
+    //warning: not invoking postbodyformessage anywhere
+    
+    func bodyForMessage(message: MsgObj) -> NSData {
+        let messageAPIDictionary = dictionaryForMessage(message)
+        let postBodyData = bodyDataForMessageDictionary(messageAPIDictionary)
+        return postBodyData
+    }
+    
+    func dictionaryForMessage(message: MsgObj) -> Dictionary<String,String> {
+        let dictionary = [
+        "user_name": "\(userName)",
+        "message_text": userInputTextField.text!
+        ]
+        return dictionary
+    }
+    
+    func bodyDataForMessageDictionary(messageDictionary: Dictionary<String,String>) -> NSData {
+        var possibleSerializationErrorContainer: NSError?
+        var data = NSJSONSerialization.dataWithJSONObject(messageDictionary, options: nil, error: &possibleSerializationErrorContainer)
+        
+        //placeholder
+        return data!
+    }
+    
+    func postMessage(messageText: String) {
+        //...
+        let newMessage = MsgObj(newText: messageText, newUser: self.userName!)
+        let bodyData = self.bodyForMessage(newMessage)
+        
+        let request = NSMutableURLRequest(URL: NSURL())
+        request.HTTPBody = bodyData
+        //acctually create and send request
+        
+    }
 
-}
+    //NSJSONSerialization.dataWithJSONObject
+
+    
+    //copy pasta
+    }

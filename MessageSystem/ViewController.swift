@@ -15,6 +15,7 @@ class ViewController: UIViewController {
   
     @IBOutlet weak var userNameField: UITextField!
     
+    //input from user (user) is passed to the next view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "nameToChannel"){
             let destinationChatViewController = segue.destinationViewController as ChannelViewController
