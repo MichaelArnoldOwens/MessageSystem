@@ -12,8 +12,15 @@ class ChannelViewController: UIViewController {
 
     @IBOutlet weak var channelTextField: UITextField!
     
-    @IBAction func channelToChat(sender: AnyObject) {
-        msgList.channel = channelTextField.text
+    var user: String?
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "channelToChat"){
+            let destinationChatViewController = segue.destinationViewController as ChatViewController
+            destinationChatViewController.channelName = channelTextField.text
+            destinationChatViewController.userName = user
+
+        }
     }
     
     override func viewDidLoad() {

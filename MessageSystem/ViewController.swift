@@ -11,14 +11,18 @@ import UIKit
 class ViewController: UIViewController {
 
 
-    
 
   
     @IBOutlet weak var userNameField: UITextField!
     
-    @IBAction func mainToChannel(sender: AnyObject) {
-        msgList.user = userNameField.text
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "nameToChannel"){
+            let destinationChatViewController = segue.destinationViewController as ChannelViewController
+            destinationChatViewController.user = userNameField.text
+        }
     }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

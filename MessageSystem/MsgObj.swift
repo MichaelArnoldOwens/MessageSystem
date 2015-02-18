@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 
-var msgList: MsgObj = MsgObj()
 
 
 class MsgObj: NSObject {
     var channel = "nonchannel"
-    var message = "nonmessage"
+    var text = "nonmessage"
     var user = "nonuser"
     
+    init(newChannel: String, newUser: String) {
+        channel = newChannel
+        user = newUser
+    }
+    
+    init(newText: String, newUser: String) {
+        text = newText
+        user = newUser
+    }
 }
