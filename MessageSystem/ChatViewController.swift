@@ -10,6 +10,8 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var timer : NSTimer?
+
     var messages = [] as Array <MsgObj> //used to populate table view
     
     var channelName: String! //channel will not change unless going back to previous view
@@ -20,10 +22,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var userInputTextField: UITextField!
     
     @IBAction func sendButtonPushed(sender: AnyObject) {
+        
         if(userInputTextField != nil) {
             var message = MsgObj(newChannel: channelName, newUser: userName!)
             message.text = userInputTextField.text
-            messages.append(message)
+            self.messages.insert(message, atIndex: 0)
            postMessage(userInputTextField.text)
             chatTable.reloadData()
         }
@@ -34,7 +37,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        getMessages() //populates the chatTable with messages already on the server
+        //getMessages() //populates the chatTable with messages already on the server
+       timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "getMessages", userInfo: nil, repeats: true)
 
     }
 
@@ -53,7 +57,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCellWithIdentifier("chatCell", forIndexPath: indexPath) as UITableViewCell
         
-        let message = self.messages[indexPath.row]
+        let message = self.messages[messages.count-(indexPath.row+1)]
         cell.textLabel!.numberOfLines = 0
         cell.textLabel!.text = "\(channelName)/<\(message.user)> :\(message.text)"
 
