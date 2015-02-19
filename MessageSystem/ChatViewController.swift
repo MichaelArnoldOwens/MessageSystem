@@ -24,7 +24,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             var message = MsgObj(newChannel: channelName, newUser: userName!)
             message.text = userInputTextField.text
             messages.append(message)
-           // postMessage(userInputTextField.text)
+           postMessage(userInputTextField.text)
             chatTable.reloadData()
         }
     }
@@ -167,12 +167,25 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func postMessage(messageText: String) {
         //...
+        
+        var session = NSURLSession.sharedSession()
+        
         let newMessage = MsgObj(newText: messageText, newUser: self.userName!)
         let bodyData = self.bodyForMessage(newMessage)
         
-        let request = NSMutableURLRequest(URL: NSURL())
+        let request = NSMutableURLRequest()
+        request.URL = NSURL(string: "\(baseUrl)\(channelName)")
         request.HTTPBody = bodyData
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
         //acctually create and send request
+//        var task = session.dataTaskWithRequest(request, completionHandler: <#((NSData!, NSURLResponse!, NSError!) -> Void)?##(NSData!, NSURLResponse!, NSError!) -> Void#>)
+//        task.resume()
+        var task = session.dataTaskWithRequest(request)
+        task.resume()
+        
         
     }
 
