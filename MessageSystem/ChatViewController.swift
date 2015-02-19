@@ -10,14 +10,14 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var timer : NSTimer?
+    var timer : NSTimer? //timer to be used to refresh table view for new messages
 
     var messages = [] as Array <MsgObj> //used to populate table view
     
     var channelName: String! //channel will not change unless going back to previous view
     var userName: String?   //user is set from first view
     
-    let baseUrl = "http://tradecraftmessagehub.com/sample/"
+    let baseUrl = "http://tradecraftmessagehub.com/sample/" //base url
 
     @IBOutlet weak var userInputTextField: UITextField!
     
@@ -26,9 +26,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(userInputTextField != nil) {
             var message = MsgObj(newChannel: channelName, newUser: userName!)
             message.text = userInputTextField.text
-            self.messages.insert(message, atIndex: 0)
-           postMessage(userInputTextField.text)
-            chatTable.reloadData()
+            self.messages.insert(message, atIndex: 0) //adds the message to the front of the messages array
+           postMessage(userInputTextField.text) //POST to server
+            chatTable.reloadData() //refresh the table
         }
     }
     
@@ -37,8 +37,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //getMessages() //populates the chatTable with messages already on the server
-       timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "getMessages", userInfo: nil, repeats: true)
+        //a timer that sends GET request every 0.2 seconds
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "getMessages", userInfo: nil, repeats: true)
 
     }
 
@@ -57,7 +57,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCellWithIdentifier("chatCell", forIndexPath: indexPath) as UITableViewCell
         
-        let message = self.messages[messages.count-(indexPath.row+1)]
+        let message = self.messages[messages.count-(indexPath.row+1)] //displays newest messages in the table in descending order (newest==>oldest)
         cell.textLabel!.numberOfLines = 0
         cell.textLabel!.text = "\(channelName)/<\(message.user)> :\(message.text)"
 
@@ -77,6 +77,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.presentViewController(alertController, animated: true, completion: nil)
     }
    
+    //MARK: GET Methods
+    
     //Response data from server and gives messages in form of Array
     func messagesFromNetworkResponseData(responseData : NSData) -> Array<MsgObj>? {
         var serializationError : NSError?
@@ -125,35 +127,26 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         task.resume()
     }
     
-   //POST
-  /*  func post(myMessage: MsgObj){
-
-        let session = NSURLSession.sharedSession()
-        
-        let request = NSMutableURLRequest()
-        request.HTTPMethod = "POST"
-
-        request.URL = NSURL(string: "\(baseUrl)/\(channelName)")
-        
-
-
-        //creating dictionary
-        var err: NSError?
-        let messageDictionaryToServer = [ "\(userName)": "\(userInputTextField)", "testuser" : "testmessage"]
-        let task = NSJSONSerialization.dataWithJSONObject(messageDictionaryToServer, options: 0, error: err)
-        
-        
-    } */
+    //MARK: Post Methods
     
-    //warning: not invoking postbodyformessage anywhere
-    
+    //converts the dictionary that holds message data into NSData
+    func bodyDataForMessageDictionary(messageDictionary: Dictionary<String,String>) -> NSData {
+        var possibleSerializationErrorContainer: NSError?
+        var data = NSJSONSerialization.dataWithJSONObject(messageDictionary, options: nil, error: &possibleSerializationErrorContainer)
+        
+        return data!
+    }
+
+    //returns the NSData to be used for body message
     func bodyForMessage(message: MsgObj) -> NSData {
         let messageAPIDictionary = dictionaryForMessage(message)
         let postBodyData = bodyDataForMessageDictionary(messageAPIDictionary)
         return postBodyData
     }
     
+    //converts MsgObj into a dictionary <String,String> to be used to create JSON body
     func dictionaryForMessage(message: MsgObj) -> Dictionary<String,String> {
+        
         let dictionary = [
         "user_name": "\(userName)",
         "message_text": userInputTextField.text!
@@ -161,22 +154,15 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return dictionary
     }
     
-    func bodyDataForMessageDictionary(messageDictionary: Dictionary<String,String>) -> NSData {
-        var possibleSerializationErrorContainer: NSError?
-        var data = NSJSONSerialization.dataWithJSONObject(messageDictionary, options: nil, error: &possibleSerializationErrorContainer)
-        
-        //placeholder
-        return data!
-    }
-    
+    //POST
     func postMessage(messageText: String) {
-        //...
         
         var session = NSURLSession.sharedSession()
         
         let newMessage = MsgObj(newText: messageText, newUser: self.userName!)
         let bodyData = self.bodyForMessage(newMessage)
         
+        //building my POST request
         let request = NSMutableURLRequest()
         request.URL = NSURL(string: "\(baseUrl)\(channelName)")
         request.HTTPBody = bodyData
@@ -184,17 +170,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        //acctually create and send request
-//        var task = session.dataTaskWithRequest(request, completionHandler: <#((NSData!, NSURLResponse!, NSError!) -> Void)?##(NSData!, NSURLResponse!, NSError!) -> Void#>)
-//        task.resume()
+      
         var task = session.dataTaskWithRequest(request)
         task.resume()
-        
-        
     }
-
-    //NSJSONSerialization.dataWithJSONObject
-
-    
-    //copy pasta
-    }
+}
