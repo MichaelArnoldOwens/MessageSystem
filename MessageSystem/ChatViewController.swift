@@ -19,7 +19,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var userInputTextField: UITextField!
     
-    @IBAction func sendButton(sender: AnyObject) {
+    @IBAction func sendButtonPushed(sender: AnyObject) {
         if(userInputTextField != nil) {
             var message = MsgObj(newChannel: channelName, newUser: userName!)
             message.text = userInputTextField.text
@@ -33,26 +33,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        getMessages()
+        
+        getMessages() //populates the chatTable with messages already on the server
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+    //A UITableView called chatTable that will display messages
     @IBOutlet weak var chatTable: UITableView!
     
     

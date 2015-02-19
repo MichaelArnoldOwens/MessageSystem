@@ -10,7 +10,7 @@
 		4F15B0EE1A93CB91007396B0 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15B0ED1A93CB91007396B0 /* ChannelViewController.swift */; };
 		4F15B0F41A93FAA5007396B0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15B0F31A93FAA5007396B0 /* ChatViewController.swift */; };
 		4F76615D1A92FA4B001A80AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76615C1A92FA4B001A80AC /* AppDelegate.swift */; };
-		4F76615F1A92FA4B001A80AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76615E1A92FA4B001A80AC /* ViewController.swift */; };
+		4F76615F1A92FA4B001A80AC /* WhoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76615E1A92FA4B001A80AC /* WhoViewController.swift */; };
 		4F7661621A92FA4B001A80AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7661601A92FA4B001A80AC /* Main.storyboard */; };
 		4F7661641A92FA4B001A80AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7661631A92FA4B001A80AC /* Images.xcassets */; };
 		4F7661671A92FA4B001A80AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7661651A92FA4B001A80AC /* LaunchScreen.xib */; };
@@ -34,7 +34,7 @@
 		4F7661571A92FA4B001A80AC /* MessageSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F76615B1A92FA4B001A80AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F76615C1A92FA4B001A80AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F76615E1A92FA4B001A80AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F76615E1A92FA4B001A80AC /* WhoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoViewController.swift; sourceTree = "<group>"; };
 		4F7661611A92FA4B001A80AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F7661631A92FA4B001A80AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4F7661661A92FA4B001A80AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4F76615C1A92FA4B001A80AC /* AppDelegate.swift */,
-				4F76615E1A92FA4B001A80AC /* ViewController.swift */,
+				4F76615E1A92FA4B001A80AC /* WhoViewController.swift */,
 				4F15B0ED1A93CB91007396B0 /* ChannelViewController.swift */,
 				4F15B0F31A93FAA5007396B0 /* ChatViewController.swift */,
 				4FFD70591A930CAC0057990A /* MsgObj.swift */,
@@ -221,7 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F76615F1A92FA4B001A80AC /* ViewController.swift in Sources */,
+				4F76615F1A92FA4B001A80AC /* WhoViewController.swift in Sources */,
 				4FFD705A1A930CAC0057990A /* MsgObj.swift in Sources */,
 				4F15B0EE1A93CB91007396B0 /* ChannelViewController.swift in Sources */,
 				4F15B0F41A93FAA5007396B0 /* ChatViewController.swift in Sources */,
